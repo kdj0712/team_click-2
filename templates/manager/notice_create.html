@@ -1,0 +1,42 @@
+{% extends "managermain_template.html"%}
+
+{% block title%}
+관리자 페이지입니다. FAQ 관리/생성
+{% endblock title%}
+
+
+{% block main %}
+<form action="/manager/faq" method="post" class="justify-content-center" >
+    <table class="justify-content-center" width="80%">
+        <tbody class="text-center" >
+            <tr>
+                <td class="text-center">
+                    <select name="categories" id="category" required>
+                        <option value="">FAQ 타입 택1</option>
+                        <option value="서비스안내">서비스안내</option>
+                        <option value="결제">결제</option>
+                        <option value="서비스이용">서비스이용</option>
+                    </select>
+                </td>
+                
+            </tr>
+            <tr>
+                <td>공지사항 제목 : </td>
+                <td ><input type="text" 
+                    name="question_title" id=""  width="80%" required></td>
+            </tr>
+            <tr>
+                <td>자주 묻는 질문 답변 : </td>
+                <td><input type="text" name="answer_main_text" id=""  width="80%" required></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit" class="btn btn-primary">올리기</button></td>
+
+            </tr>
+        </tbody>
+        
+    </table>
+</form>
+
+
+{% endblock main%}

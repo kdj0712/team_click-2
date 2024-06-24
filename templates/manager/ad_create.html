@@ -1,0 +1,17 @@
+{% extends "managermain_template.html"%}
+
+{% block title%}
+Click-Tech
+{% endblock title%}
+
+
+{% block main %}
+
+광고 생성 완료됐슴둥
+
+<form action="/manager/ad" method="get">
+    <button type="submit" formaction="/manager/ad" >create more</button>
+    <button type="submit" formaction="/manager/adlist">list</button>
+</form>
+
+{% endblock main%}

@@ -1,0 +1,128 @@
+{% extends "usermain_template.html"%}
+{% block title%}
+쿠폰교환
+{% endblock title%}
+{% block main %}
+
+<!-- 필터링 메뉴들 -->
+<div class="d-flex gap-2 justify-content-center py-5 container-fluid">
+    <div class="row justify-content-md-center">
+        <a class="col" href="/clicktech/exchange/">
+            <span class="badge d-flex p-2 align-items-center text-emphasis bg-primary rounded-pill">
+                <span class="px-1">전체</span>
+            </span>
+        </a>
+        <a lass="col" href="/clicktech/exchange/cafe">
+            <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+                <span class="px-1">카페</span>
+            </span>
+        </a>
+        <a lass="col" href="/clicktech/exchange/bake">
+            <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+                <span class="px-1">베이커리/도넛/떡</span>
+            </span>
+        </a>
+        <a lass="col" href="/clicktech/exchange/mart">
+            <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+                <span class="px-1">백화점/마트</span>
+            </span>
+        </a>
+        <a lass="col" href="/clicktech/exchange/icecream">
+            <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+                <span class="px-1">아이스크림</span>
+            </span>
+        </a>
+        <a lass="col" href="/clicktech/exchange/convin">
+            <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+                <span class="px-1">편의점</span>
+            </span>
+        </a>
+        <a lass="col" href="/clicktech/exchange/burger">
+            <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+                <span class="px-1">버거/피자</span>
+            </span>
+        </a>
+        <a lass="col" href="/clicktech/exchange/chicken">
+            <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+                <span class="px-1">치킨</span>
+            </span>
+        </a>
+        <a lass="col" href="/clicktech/exchange/korean">
+            <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+                <span class="px-1">한식/중식/분식</span>
+            </span>
+        </a>
+    </div>
+    <div class="row">
+
+        <!-- 나중에 줄 바꾸기 -->
+        <a href="/clicktech/exchange/jokbal">
+            <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+                <span class="px-1">구이/족발</span>
+            </span>
+        </a>
+        <a href="/clicktech/exchange/restaurant">
+            <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+                <span class="px-1">레스토랑/뷔페</span>
+            </span>
+        </a>
+        <a href="/clicktech/exchange/fusion">
+            <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+                <span class="px-1">외국/퓨전/기타</span>
+            </span>
+        </a>
+        <a href="/clicktech/exchange/movie">
+            <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+                <span class="px-1">영화/음악/도서</span>
+            </span>
+        </a>
+        <a href="/clicktech/exchange/commu">
+            <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+                <span class="px-1">kt/통신</span>
+            </span>
+        </a>
+        <a href="/clicktech/exchange/beauty">
+            <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+                <span class="px-1">뷰티/헤어/바디</span>
+            </span>
+        </a>
+        <a href="/clicktech/exchange/health">
+            <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+                <span class="px-1">건강/리빙/식품관</span>
+            </span>
+        </a>
+        <a href="/clicktech/exchange/enter">
+            <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+                <span class="px-1">생활/가전/엔터</span>
+            </span>
+        </a>
+    </div>
+
+
+</div>
+
+<!-- 기프티콘 목록들 -->
+<div class="container">
+    <div class="row">
+        {% if gifty_list == False %}
+        <h2 class="container justify-content-center">아직 상품이 없음다</h2>
+        {% else %}
+        {% for gifty in gifty_list %}
+        <div class="col-3">
+            <a href="/clicktech/exchange/detail/{{gifty.id}}" class="justify-content-center">
+                <div class="card col-3 justify-content-center" style="width: 100%;">
+                    <img src={{gifty.gifty_image}} class="card-img-top text-center" alt="기프티콘 이미지입니다.">
+                    <div class="card-body">
+                        <p class="card-text fw-bold">{{gifty.gifty_brand}}</p>
+                        <p class="card-text">{{gifty.gifty_name}}</p>
+                        <p class="card-text">{{gifty.gifty_price}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+{% endblock main %}

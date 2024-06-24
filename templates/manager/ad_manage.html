@@ -1,0 +1,80 @@
+{% extends "managermain_template.html"%}
+
+{% block title%}
+Click-Tech
+{% endblock title%}
+
+
+{% block main %}
+
+<div class="container text-center">Create Ad</div>
+<form class="m-5" >
+    <table width="80%">
+        <tr>
+            <td>
+                <select name="type" id="type" required>
+                    <option value="">광고 타입(앱설치 등등 택1)</option>
+                    <option value="download_app">앱설치</option>
+                    <option value="join">회원가입</option>
+                    <option value="newsletter">뉴스레터 구독</option>
+                    <option value="enter">사이트 접속</option>
+                    <option value="purchase">구매</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td >
+                광고 브랜드 이름 :
+            </td>
+            <td  width="80%">
+                <input width="100%" type="text" name="brand" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                광고 이미지(500*500) :
+            </td>
+            <td>
+                <input type="file" name="thumnail" required/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                광고 이미지(500*500) url :
+            </td>
+            <td>
+                <input type="text" name="thumnail_url" required />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                광고 내용 :
+            </td>
+            <td>
+                <input type="text" name="contents" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                광고 세부 내용 :
+            </td>
+            <td>
+                <input type="text" name="detail_contents" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                포인트 :
+            </td>
+            <td>
+                <input type="text" name="point" required>
+            </td>
+        </tr>
+    </table>
+    <button formaction="/manager/ad/submit" formmethod="post" type="submit">create</button>
+    <button type="reset">reset</button>
+    
+</form>
+
+
+{% endblock main%}

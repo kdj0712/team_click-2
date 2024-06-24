@@ -1,0 +1,82 @@
+{% extends "usermain_template.html"%}
+
+{% block title%}
+Click-Tech
+{% endblock title%}
+
+{% block main %}
+
+<h2 class="text-center mt-5 mb-5"> 안녕하세요 OOO님</h2>
+<div class="mt-3 mb-3">회원가입형</div>
+<div class="container ">
+    <!-- 광고 상품 진열 -->
+<div class="container ">
+    <div class="row">
+  
+        {% for ad in ad_main %}
+        <div class="col-3">
+            <a href="/clicktech/alllist/detail">
+                <div class="card col-3 me-3" style="width: 100%;">
+                    <img src={{ad.thumnail}}
+                        class="card-img-top" alt="광고 배너 이미지입니다.">
+                    <div class="card-body">
+                        <p class="card-text fw-bold">{{ad.brand}}</p>
+                        <p class="card-text">{{ad.contents}}</p>
+                    </div>
+                </div>
+            </a>
+            <p class="chips">
+                <span class="chip join badge bg-primary-subtle text-primary-emphasis rounded-pill">{{ad.type}}</span>
+            </p>
+        </div>
+        {% endfor %}
+        
+
+    </div>
+</div>
+</div>
+<div class="mt-3 mb-3">
+    <img width="100%" class="" src="https://image.msscdn.net/images/campaign_img/2023122812075300000050067.jpg" alt="">
+</div>
+<div class="mt-3 mb-3">뉴스레터 구독형</div>
+<div class="container ">
+    <div class="row">
+        <a class="col-3" href="/clicktech/alllist/detail">
+            <div class="card me-3" style="width: 18rem;">
+                <img src="https://img.29cm.co.kr/next-product/2023/02/07/1d5ed854796d4085b032dcb83eb22e77_20230207161038.jpg?width=500//"
+                    class="card-img-top" alt="광고 배너 이미지입니다.">
+                <div class="card-body">
+                    <p class="card-text">코리빙하우스 뉴스레터 구독하면 5000point</p>
+                </div>
+            </div>
+        </a>
+        <a class="col-3" href="/clicktech/alllist/detail">
+            <div class="card col-3 me-3" style="width: 18rem;">
+                <img src="https://img.29cm.co.kr/next-product/2023/02/07/1d5ed854796d4085b032dcb83eb22e77_20230207161038.jpg?width=500//"
+                    class="card-img-top" alt="광고 배너 이미지입니다.">
+                <div class="card-body">
+                    <p class="card-text">코리빙하우스 뉴스레터 구독하면 5000point</p>
+                </div>
+            </div>
+        </a>
+        <a class="col-3"  href="/clicktech/alllist/detail">
+            <div class="card col-3 me-3" style="width: 18rem;">
+                <img src="https://img.29cm.co.kr/next-product/2023/02/07/1d5ed854796d4085b032dcb83eb22e77_20230207161038.jpg?width=500//"
+                    class="card-img-top" alt="광고 배너 이미지입니다.">
+                <div class="card-body">
+                    <p class="card-text">코리빙하우스 뉴스레터 구독하면 5000point</p>
+                </div>
+            </div>
+        </a>
+        <a class="col-3"  href="/clicktech/alllist/detail">
+            <div class="card col-3 me-3" style="width: 18rem;">
+                <img src="https://img.29cm.co.kr/next-product/2023/02/07/1d5ed854796d4085b032dcb83eb22e77_20230207161038.jpg?width=500//"
+                    class="card-img-top" alt="광고 배너 이미지입니다.">
+                <div class="card-body">
+                    <p class="card-text">코리빙하우스 뉴스레터 구독하면 5000point</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock main %}

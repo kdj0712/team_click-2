@@ -1,0 +1,95 @@
+{% extends "usermain_template.html"%}
+{% block title%}
+FAQ
+{% endblock title%}
+
+
+{% block main %}
+<form>
+    <div class="container col-10">
+        <div class="btn-group col-12" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-light btn-outline-dark col-2" formaction="/clicktech/faq"
+                formmethod="get">전체</button>
+            <!-- <button type="button" class="btn btn-light btn-outline-dark col-2" formaction="/clicktech/faq/서비스안내"
+                formmethod="get">서비스안내</button>
+            <button type="button" class="btn btn-light btn-outline-dark col-2" formaction="/clicktech/faq/역사"
+                formmethod="get">역사</button>
+            <button type="button" class="btn btn-light btn-outline-dark col-2" formaction="/clicktech/faq/문화"
+                formmethod="get">문화</button>
+            <button type="button" class="btn btn-light btn-outline-dark col-2" formaction="/clicktech/faq/기술"
+                formmethod="get">기술</button>
+            <button type="button" class="btn btn-light btn-outline-dark col-2" formaction="/clicktech/faq/사회"
+                formmethod="get">사회</button> -->
+        </div>
+    </div>
+
+
+    {%for faq in list_faq %}
+    <div class="accordion accordion-flush col-10" id=" {{ loop.index }}">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapse-{{ loop.index }}" aria-expanded="false" aria-controls="flush-collapse-{{ loop.index }}">
+                    {{ faq.question_title }}
+                </button>
+            </h2>
+            <div id="flush-collapseOne-{{ loop.index }}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    {{ faq.answer_main_text }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+<!-- 
+    {% for faq in list_faq %}
+<div class="accordion Col-10" id="{{ loop.index }}">
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-toggle="collapse"
+                data-target="#flush-collapse-{{ loop.index }}" aria-expanded="false"
+                aria-controls="flush-collapse-{{ loop.index }}">
+                {{ faq.question_title }}
+            </button>
+        </h2>
+        <div id="flush-collapse-{{ loop.index }}" class="accordion-collapse collapse" data-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                {{ faq.answer_main_text }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %} -->
+
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <li class="page-item {{ '' if pagination.has_previous_block else 'disabled' }}">
+                <button type="submit" class="page-link" formaction="/faq/{{pagination.first_page}}">
+                    맨 처음
+                </button>
+
+            </li>
+            <li class="page-item {{ '' if pagination.has_previous_page else 'disabled' }}">
+                <button type="submit" class="page-link" formaction="/faq/{{pagination.previous_page}}">이전</button>
+            </li>
+            {% for page_num in pagination.current_page_range %}
+            <li class="page-item {{ 'active' if page_num == pagination.current_page else '' }}">
+                <button type="submit" class="page-link" formaction="/faq/{{ page_num }}">
+                    {{page_num}}
+                </button>
+            </li>
+            {% endfor %}
+            <li class="page-item {{ '' if pagination.has_next_page else 'disabled' }}">
+                <button type="submit" class="page-link" formaction="/faq/{{ pagination.next_page }}">다음</button>
+            </li>
+            <li class="page-item {{ '' if pagination.has_next_block else 'disabled' }}">
+                <button type="submit" class="page-link" formaction="/faq/{{ pagination.last_page }}">
+                    맨 끝
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+</form>
+{% endblock main %}

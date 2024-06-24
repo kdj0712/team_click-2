@@ -1,0 +1,85 @@
+{% extends "usermain_template.html"%}
+{% block title%}
+Click-Tech 광고
+{% endblock title%}
+
+{% block main %}
+
+
+<!-- 필터링 메뉴들 -->
+<div class="d-flex gap-2 justify-content-start py-5">
+    <a href="/clicktech/alllist" >
+        <span class="badge d-flex p-2 align-items-center text-emphasis bg-primary rounded-pill" >
+            <span class="px-1">전체</span>
+        </span>
+    </a>
+    <a href="/clicktech/alllist/download_app">
+        <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+            <span class="px-1" name="type" value="download_app">앱 설치</span>
+        </span>
+    </a>
+    <a href="/clicktech/alllist/join">
+        <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+            <span class="px-1" name="type"  value="join">회원가입</span>
+        </span>
+    </a>
+    <a href="/clicktech/alllist/newsletter">
+        <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+            <span class="px-1" name="type"  value="newsletter">뉴스레터 구독</span>
+        </span>
+    </a>
+    <a href="/clicktech/alllist/enter">
+        <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+            <span class="px-1" name="type"  value="enter">사이트 접속</span>
+        </span>
+    </a>
+    <a href="/clicktech/alllist/purchase">
+        <span class="badge d-flex p-2 align-items-center text-primary-emphasis bg-light rounded-pill">
+            <span class="px-1" name="type"  value="purchase">구매</span>
+        </span>
+    </a>
+
+
+</div>
+<!-- 광고 상품 진열 -->
+<div class="container">
+    <div class="row">
+    {% if ad_list==False %}
+    <div>아직 광고 상품이 없습니다.</div>
+    {% else %}     
+        {% for ad in ad_list %}
+        <div class="col-3">
+            <a href="/clicktech/alllist/detail/{{ad.id}}" class="justify-content-center" >
+                <div class="card col-3 justify-content-center" style="width: 100%;">
+                    <img src={{ad.thumnail_url}}
+                        class="card-img-top text-center"  alt="광고 배너 이미지입니다.">
+                    <div class="card-body">
+                        <p class="card-text fw-bold">{{ad.brand}}</p>
+                        <p class="card-text">{{ad.contents}}</p>
+                    </div>
+                </div>
+            </a>
+            <p class="chips">
+                <span class="chip join badge bg-primary-subtle text-primary-emphasis rounded-pill">
+                {% if ad.type =="download_app" %}
+                    앱 설치
+                {% elif ad.type =="join" %}
+                    회원가입
+                {% elif ad.type =="newsletter" %}
+                    뉴스레터 구독
+                {% elif ad.type =="enter" %}
+                    사이트 접속
+                {% elif ad.type =="purchase" %}
+                    구매
+                {% endif %}
+                </span>
+            </p>
+        </div>
+        {% endfor %}
+        
+
+    </div>
+    {% endif %}
+</div>
+
+{% endblock main %}

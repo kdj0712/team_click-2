@@ -1,0 +1,51 @@
+{% extends "usermain_template.html"%}
+{% block title%}
+쿠폰교환
+{% endblock title%}
+
+{% block main %}
+
+<div class="container">
+    <!-- 제품 내용 간략 -->
+    <div class="mt-5">
+        <div>{{gifty.gifty_brand}}</div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <img src="{{gifty.gifty_image}}" alt="{{gifty.gifty_name}}">
+        </div>
+        <div class="col">
+            <!-- 쿠폰 내용 -->
+            <div class="align-top">
+                <h3>{{gifty.gifty_name}}</h3>
+                <h2>{{gifty.gifty_price}}</h2>
+            </div>
+            <!-- 버튼들 / 활성화 필요 -->
+            <div class="container row align-bottom">
+                <div class="button col-2">공유</div>
+                <div class="button col-2">❤</div>
+                <!-- 로그인이 되지 않았을 경우 로그인 창으로 가게 하는 것 추가해야함 -->
+                <a href="/clicktech/exchange/order/{{gifty.id}}" class="col-8">구매하기</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 제품 내용 상세보기 -->
+    <div class="container">
+        <h3>상품 상세</h3>
+        <div class="cont">
+            <div>{{ gifty.gifty_detail }}</div>
+        </div>
+        <h3>주의사항</h3>
+        <div class="cont current">
+            <div>{{ gifty.gifty_caution }}</div>
+        </div>
+        <h3>이용안내</h3>
+        <div class="cont">
+            <img src="../../resources/img/how_to_use_coupon.jpg" alt="이용안내 이미지입니다.">
+        </div>
+    </div>
+</div>
+
+
+{% endblock main %}

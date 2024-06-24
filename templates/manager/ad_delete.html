@@ -1,0 +1,33 @@
+{% extends "usermain_template.html"%}
+{% block title%}
+Click-Tech 광고
+{% endblock title%}
+{% block main %}
+<button type="submit">삭제</button>
+<div class="mt-5">
+    <div class="chip join badge bg-primary-subtle text-primary-emphasis rounded-pill">
+            {% if ad_detail.type =="download_app" %}
+                앱 설치
+            {% elif ad_detail.type =="join" %}
+                회원가입
+            {% elif ad_detail.type =="newsletter" %}
+                뉴스레터 구독
+            {% elif ad_detail.type =="enter" %}
+                사이트 접속
+            {% elif ad_detail.type =="purchase" %}
+                구매
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6"><img src={{ad_detail.thumnail_url}} style="width: 100%;" alt=""></div>
+        <div class="col-6">
+            <div>| {{ad_detail.brand}}</div>
+            <div>| {{ad_detail.point}}point</div>
+            <div>| {{ad_detail.detail_contents}}</div>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}
+

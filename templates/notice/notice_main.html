@@ -1,0 +1,75 @@
+{% extends "usermain_template.html"%}
+{% block title%}
+공지사항
+{% endblock title%}
+
+{% block main %}
+
+<div class="container row">
+    <div class="justify-content-center">공지사항</div>
+    <form action="">
+        <select name="key" id="">
+            <option value="">뭔가 쓸데가 있을지도</option>
+            <option value="">냠냠</option>
+            <option value="">쩝쩝</option>
+            <option value="">히히</option>
+        </select>
+    </form>
+    <form action="">
+        <table class="table table-hover table-borderless">
+            <thead class="text-center">
+                <tr>
+                    <th class="col">번호</th>
+                    <th class="col">제목</th>
+                    <th class="col">조회수</th>
+                    <th class="col">날짜</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for notice in notice_list %}
+                <tr formaction="/clicktech/notice/{{pagination.first_page}}/{notice.id}">
+                    <td> {{loop.index}} </td>
+                    <td> {{notice.notice_title}}</td>
+                    <td> 조회수 </td>
+                    <td> {{notice.date}}</td>
+                    <td><button type="submit">삭제</button></td>
+                    <td><button type="submit">메인</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p>광고수 : {{pagination.total_records}}</p>
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-end">
+                <li class="page-item {{ '' if pagination.has_previous_block else 'disabled' }}">
+                    <button type="submit" class="page-link" formaction="/notice/{{pagination.first_page}}">
+                        맨 처음
+                    </button>
+                </li>
+                <li class="page-item {{ '' if pagination.has_previous_page else 'disabled' }}">
+                    <button type="submit" class="page-link"
+                        formaction="/notice/{{pagination.previous_page}}">이전</button>
+                </li>
+                {% for page_num in pagination.current_page_range %}
+                <li class="page-item {{ 'active' if page_num == pagination.current_page else '' }}">
+                    <button type="submit" class="page-link" formaction="/notice/{{page_num }}">
+                        {{page_num}}
+                    </button>
+                </li>
+                {% endfor %}
+                <li class="page-item {{ '' if pagination.has_next_page else 'disabled' }}">
+                    <button type="submit" class="page-link"
+                        formaction="/notice/{{pagination.next_page }}">다음</button>
+                </li>
+                <li class="page-item {{ '' if pagination.has_next_block else 'disabled' }}">
+                    <button type="submit" class="page-link" formaction="/notice/{{pagination.last_page }}">
+                        맨 끝
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </form>
+</div>
+
+
+{% endblock main %}
